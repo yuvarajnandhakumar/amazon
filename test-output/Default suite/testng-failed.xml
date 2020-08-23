@@ -5,7 +5,7 @@
     <classes>
       <class name="TestCase.CommonAction">
         <methods>
-          <include name="startApp" invocation-numbers="0"/>
+          <include name="startApp" invocation-numbers="1"/>
         </methods>
       </class> <!-- TestCase.CommonAction -->
     </classes>

@@ -1,7 +1,10 @@
 package TestCase;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.DataProvider;
@@ -31,6 +34,17 @@ public class CommonAction {
 		ap.signInSubmit(driver);
 		Thread.sleep(2000);
 		System.out.println("amazon login completed");
+		
+		//mobile search
+		//click
+		
+		List<WebElement> findElements = driver.findElements(By.xpath("//div[@class='a-section a-spacing-none']/h2"));
+		for (WebElement webElement : findElements) {
+			String text = webElement.getText();
+			System.out.println(text);
+			
+		}
+		driver.quit();
 	}
 
 	
