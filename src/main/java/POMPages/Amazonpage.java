@@ -11,15 +11,13 @@ import TestCase.AmazonTest;
 import commonMethod.CommonAction;
 
 
-public class Amazonpage  extends CommonAction{
+public class Amazonpage  extends AmazonTest{
 
-	
-	
 
-	public Amazonpage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+	 public Amazonpage(WebDriver driver) {
+	        PageFactory.initElements(driver, this);
+	        this.driver = driver;
+	    }
 
 	@FindBy(xpath="//span[contains(text(),'Hello,')]")
 	private WebElement signin;
@@ -35,12 +33,14 @@ public class Amazonpage  extends CommonAction{
 	
 	@FindBy(id="signInSubmit")
 	private WebElement signInSubmit;
-		
+
+	public void signinaction() {
+		signin.click();
+    }
 	
-	public void getSignin() {
-		click(signin);
+	public WebElement getSignin() {
+		return signin;
 	}
-		
 
 	public WebElement getUserid() {
 		return userid;
@@ -57,6 +57,6 @@ public class Amazonpage  extends CommonAction{
 	public WebElement getSignInSubmit() {
 		return signInSubmit;
 	}
-
-
+		
+	
 }

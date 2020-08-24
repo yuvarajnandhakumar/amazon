@@ -14,22 +14,24 @@ import POMPages.Amazonpage;
 import commonMethod.CommonAction;
 import commonMethod.DataInputProvider;
 
-public class AmazonTest extends Amazonpage{
-
-	public AmazonTest(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public String dataSheetName="TC001";
+public class AmazonTest extends CommonAction{
+	Amazonpage ap;
 	
+
+
+	//public String dataSheetName="TC001";
+	
+
 
 	@Test
 	public void AmazonLogin() throws InterruptedException {
 
-		startchrome();
-		getSignin();
+		//startchrome();
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://amazon.in");
+		driver.manage().window().maximize();
+		ap.signinaction();
 		//driver.findElement(By.xpath("//span[contains(text(),'Hello,')]")).click();
 		//ca.click(ap.getSignin());
 		Thread.sleep(2000);
@@ -54,11 +56,11 @@ public class AmazonTest extends Amazonpage{
 	}
 
 
-	@DataProvider(name="fetchData")
+	/*@DataProvider(name="fetchData")
 	public String[][] getData() 
 	{
 		return DataInputProvider.getSheet(dataSheetName);
-	}	
+	}*/	
 
 }
 

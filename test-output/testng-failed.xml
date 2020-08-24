@@ -6,6 +6,7 @@
       <class name="TestCase.AmazonTest">
         <methods>
           <include name="AmazonLogin"/>
+          <include name="startchrome"/>
         </methods>
       </class> <!-- TestCase.AmazonTest -->
     </classes>
