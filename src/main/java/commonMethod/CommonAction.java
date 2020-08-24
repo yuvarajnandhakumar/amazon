@@ -12,21 +12,27 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 public class CommonAction{
 
-	public static  WebDriver driver;
+	public static WebDriver driver;
 	
-	
-	@BeforeClass
+	public CommonAction(WebDriver driver) {
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		CommonAction.driver = new ChromeDriver();
+		driver=CommonAction.driver;
+        PageFactory.initElements(driver, this);
+       
+	}
+		
 	public void startchrome()
 	{
-	System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-	driver = new ChromeDriver();
 	driver.get("https://amazon.in");
 	driver.manage().window().maximize();
+	PageFactory.initElements(driver, this);
 	}
 	
-	
-
-	
+	public static WebDriver getDriver() {
+		return driver;
+	}
+		
 	public void insertText(WebElement element, String value) {
 		try{
 			try{

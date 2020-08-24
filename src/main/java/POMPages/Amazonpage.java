@@ -10,34 +10,31 @@ import org.openqa.selenium.support.PageFactory;
 import TestCase.AmazonTest;
 import commonMethod.CommonAction;
 
+public class Amazonpage extends CommonAction {
 
-public class Amazonpage  extends AmazonTest{
+	public Amazonpage(WebDriver driver) {
+		super(driver);
+	}
 
-
-	 public Amazonpage(WebDriver driver) {
-	        PageFactory.initElements(driver, this);
-	        this.driver = driver;
-	    }
-
-	@FindBy(xpath="//span[contains(text(),'Hello,')]")
+	@FindBy(xpath = "//span[contains(text(),'Hello,')]")
 	private WebElement signin;
 
-	@FindBy(name="email")
+	@FindBy(name = "email")
 	private WebElement userid;
-	
-	@FindBy(name="password")
+
+	@FindBy(name = "password")
 	private WebElement pwd;
-	
-	@FindBy(id="continue")
+
+	@FindBy(id = "continue")
 	private WebElement continueBtn;
-	
-	@FindBy(id="signInSubmit")
+
+	@FindBy(id = "signInSubmit")
 	private WebElement signInSubmit;
 
 	public void signinaction() {
-		signin.click();
-    }
-	
+		click(signin);
+	}
+
 	public WebElement getSignin() {
 		return signin;
 	}
@@ -57,6 +54,5 @@ public class Amazonpage  extends AmazonTest{
 	public WebElement getSignInSubmit() {
 		return signInSubmit;
 	}
-		
-	
+
 }
