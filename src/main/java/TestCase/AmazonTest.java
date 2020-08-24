@@ -4,50 +4,56 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import POMPages.Amazonpage;
+import commonMethod.CommonAction;
 import commonMethod.DataInputProvider;
 
-public class CommonAction {
-	public  RemoteWebDriver driver;
+public class AmazonTest extends Amazonpage{
+
+	public AmazonTest(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String dataSheetName="TC001";
-	Amazonpage ap= new Amazonpage();
+	
 
-	@Test(dataProvider="fetchData")
-	public void startApp(String uname, String pwd) throws InterruptedException {
+	@Test
+	public void AmazonLogin() throws InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("https://amazon.in");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		ap.signin(driver);
+		startchrome();
+		getSignin();
+		//driver.findElement(By.xpath("//span[contains(text(),'Hello,')]")).click();
+		//ca.click(ap.getSignin());
 		Thread.sleep(2000);
-		ap.Userid(driver, uname);
-		ap.continueBtn(driver);
+		//ca.insertText(ap.getUserid(),"dd");
+		//ca.click(ap.getContinueBtn());
 		Thread.sleep(2000);
-		ap.Password(driver,pwd);
-		ap.signInSubmit(driver);
+		//ca.insertText(ap.getPwd(), "ss");
+		//ca.click(ap.getSignInSubmit());		
 		Thread.sleep(2000);
 		System.out.println("amazon login completed");
-		
+
 		//mobile search
 		//click
-		
+
 		List<WebElement> findElements = driver.findElements(By.xpath("//div[@class='a-section a-spacing-none']/h2"));
-		for (WebElement webElement : findElements) {
+		for (WebElement webElement : findElements) 
+		{
 			String text = webElement.getText();
 			System.out.println(text);
-			
 		}
 		driver.quit();
 	}
 
-	
+
 	@DataProvider(name="fetchData")
 	public String[][] getData() 
 	{

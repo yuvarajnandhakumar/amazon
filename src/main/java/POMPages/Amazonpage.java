@@ -4,45 +4,59 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import TestCase.CommonAction;
-
-public class Amazonpage  {
-
-	RemoteWebDriver driver;
-	private static WebElement element = null;
-	public static WebElement signin(WebDriver driver){
-		element = driver.findElement(By.xpath("//span[contains(text(),'Hello,')]"));
-		element.click();
-		return element;
-	}
-
-	public static WebElement Userid(WebDriver driver,String Value){
-		element = driver.findElement(By.name("email"));
-		element.sendKeys(Value);
-		return element;
-	}
-
-	public static WebElement Password(WebDriver driver,String Value){
-		element = driver.findElement(By.name("password"));
-		element.sendKeys(Value);
-		return element;
-	}
+import TestCase.AmazonTest;
+import commonMethod.CommonAction;
 
 
-	public static WebElement continueBtn(WebDriver driver){
-		element = driver.findElement(By.id("continue"));
-		element.click();
-		return element;
-	}
-
-	public static WebElement signInSubmit(WebDriver driver){
-		element = driver.findElement(By.id("signInSubmit"));
-		element.click();
-		return element;
-	}
+public class Amazonpage  extends CommonAction{
 
 	
+	
+
+	public Amazonpage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	@FindBy(xpath="//span[contains(text(),'Hello,')]")
+	private WebElement signin;
+
+	@FindBy(name="email")
+	private WebElement userid;
+	
+	@FindBy(name="password")
+	private WebElement pwd;
+	
+	@FindBy(id="continue")
+	private WebElement continueBtn;
+	
+	@FindBy(id="signInSubmit")
+	private WebElement signInSubmit;
+		
+	
+	public void getSignin() {
+		click(signin);
+	}
+		
+
+	public WebElement getUserid() {
+		return userid;
+	}
+
+	public WebElement getPwd() {
+		return pwd;
+	}
+
+	public WebElement getContinueBtn() {
+		return continueBtn;
+	}
+
+	public WebElement getSignInSubmit() {
+		return signInSubmit;
+	}
 
 
 }

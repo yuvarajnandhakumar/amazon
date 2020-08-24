@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.CommonAction">
+      <class name="TestCase.AmazonTest">
         <methods>
-          <include name="startApp" invocation-numbers="1"/>
+          <include name="AmazonLogin"/>
         </methods>
-      </class> <!-- TestCase.CommonAction -->
+      </class> <!-- TestCase.AmazonTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
